@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace BulkyWeb.Models
 {
@@ -7,10 +8,14 @@ namespace BulkyWeb.Models
         [Key]
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Tên danh mục là bắt buộc")]
+
+        [DisplayName("tên Category")]
+        [MaxLength(30, ErrorMessage = "Tên danh mục không được vượt quá 30 ký tự")]
         public string Name { get; set; }
 
-
+        [DisplayName("thứ tự hiển thị")]
+        [Range(1, 100, ErrorMessage = "Thứ tự hiển thị phải từ 1 đến 100")]
         public int DisplayOrder { get; set; }
     }
 }
